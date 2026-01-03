@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MuaazSolar - Premium Solar Solutions</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23FFD700'/><circle cx='50' cy='50' r='35' fill='%23FFA500'/><circle cx='50' cy='50' r='25' fill='%23FF8C00'/><path d='M50 10 L55 30 L50 25 L45 30 Z M90 50 L70 55 L75 50 L70 45 Z M50 90 L45 70 L50 75 L55 70 Z M10 50 L30 45 L25 50 L30 55 Z M75 25 L60 35 L65 32 L62 27 Z M75 75 L62 73 L65 68 L60 65 Z M25 75 L38 73 L35 68 L40 65 Z M25 25 L40 35 L35 32 L38 27 Z' fill='%23FFD700'/></svg>" type="image/svg+xml">
+    <link rel="stylesheet" href="./CSS/index.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MUAAZSOLAR</div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="#calculator" onclick="closeMenu()">Calculator</a></li>
+                <li><a href="./HTML/shop.html" onclick="closeMenu()">Shop</a></li>
+                <li><a href="#booking" class="nav-cta" onclick="closeMenu()" style="color: white;">Book Consultation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Clean Energy for a Sustainable Future</h1>
+            <p>Premium solar panel installation and energy solutions for residential and commercial properties</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="document.getElementById('calculator').scrollIntoView({behavior: 'smooth'})">
+                    Get Free Estimate
+                </button>
+                <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
+                    Our Services
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>5000+</h3>
+                <p>Installations Completed</p>
+            </div>
+            <div class="stat-item">
+                <h3>98%</h3>
+                <p>Customer Satisfaction</p>
+            </div>
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Support Available</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">What We Offer</div>
+                <h2 class="section-title">Our Services</h2>
+            </div>
+            <div class="service-grid">
+               <a href="./HTML/costanaly.html" style="text-decoration: none;">
+                 <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=600" alt="Cost Analysis">
+                    <h3>Cost Analysis & Planning</h3>
+                    <p>Comprehensive energy assessment and detailed cost estimates tailored to your property's specific needs and energy consumption patterns.</p>
+                </div>
+               </a>
+              <a href="./HTML/installation.html" style="text-decoration: none;">
+                  <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600" alt="Installation">
+                    <h3>Professional Installation</h3>
+                    <p>Expert installation by certified engineers with guaranteed quality workmanship. Full compliance with local regulations and building codes.</p>
+                </div>
+              </a>
+                <a href="./HTML/maintenance.html" style="text-decoration: none;">
+                    <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600" alt="Maintenance">
+                    <h3>Maintenance & Monitoring</h3>
+                    <p>Regular system checkups, performance monitoring, and preventive maintenance to ensure optimal efficiency and longevity of your investment.</p>
+                </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="calculator">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Estimate Your Savings</div>
+                <h2 class="section-title">Solar Cost Calculator</h2>
+            </div>
+            <div class="calc-wrapper">
+                <form id="calcForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="monthlyBill">Monthly Electricity Bill ($)</label>
+                            <input type="number" id="monthlyBill" required min="0" placeholder="e.g., 250">
+                        </div>
+                        <div class="form-group">
+                            <label for="roofSize">Available Roof Space (sq ft)</label>
+                            <input type="number" id="roofSize" required min="0" placeholder="e.g., 1000">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Property Type</label>
+                            <select id="location">
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="industrial">Industrial</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sunlight">Daily Sunlight Hours</label>
+                            <select id="sunlight">
+                                <option value="4">4-5 hours</option>
+                                <option value="6" selected>6-7 hours</option>
+                                <option value="8">8+ hours</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="calc-button">Calculate Investment</button>
+                </form>
+                <div id="result" class="result">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <h4>Total Investment</h4>
+                            <p id="estimatedCost">$0</p>
+                        </div>
+                        <div class="result-item">
+                            <h4>Panels Required</h4>
+                            <p id="panelsNeeded">0</p>
+                        </div>
+                        <div class="result-item">
+                            <h4>Annual Savings</h4>
+                            <p id="savings">$0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section id="products" class="products">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Premium Equipment</div>
+                <h2 class="section-title">Solar Products</h2>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600" alt="Premium Solar Panel" class="product-image">
+                    <div class="product-info">
+                        <h3>Premium Monocrystalline Panel</h3>
+                        <p>High-efficiency 400W panel with 25-year warranty</p>
+                        <div class="price">$299</div>
+                        <button class="buy-button" onclick="addToCart('Premium Monocrystalline Panel', 299)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=600" alt="Standard Panel" class="product-image">
+                    <div class="product-info">
+                        <h3>Standard Polycrystalline Panel</h3>
+                        <p>Reliable 300W panel with 20-year warranty</p>
+                        <div class="price">$199</div>
+                        <button class="buy-button" onclick="addToCart('Standard Polycrystalline Panel', 199)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=600" alt="Battery Storage" class="product-image">
+                    <div class="product-info">
+                        <h3>Lithium Battery Storage</h3>
+                        <p>10kWh capacity with smart management system</p>
+                        <div class="price">$4,999</div>
+                        <button class="buy-button" onclick="addToCart('Lithium Battery Storage', 4999)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600" alt="Inverter System" class="product-image">
+                    <div class="product-info">
+                        <h3>Hybrid Inverter System</h3>
+                        <p>5kW inverter with real-time monitoring</p>
+                        <div class="price">$1,499</div>
+                        <button class="buy-button" onclick="addToCart('Hybrid Inverter System', 1499)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section id="booking" class="booking">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Schedule Service</div>
+                <h2 class="section-title">Book an Engineer</h2>
+            </div>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="john@example.com">
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Installation Address</label>
+                    <input type="text" id="address" required placeholder="123 Main Street, City, State">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Type</label>
+                    <select id="service">
+                        <option value="consultation">Free Consultation</option>
+                        <option value="installation">Installation Service</option>
+                        <option value="maintenance">Maintenance Check</option>
+                        <option value="repair">Repair Service</option>
+                    </select>
+                </div>
+                <button type="submit" class="calc-button">Schedule Appointment</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>MUAAZSOLAR</h4>
+                <p>Leading provider of sustainable solar energy solutions for residential and commercial properties.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#services">Services</a>
+                <a href="#calculator">Calculator</a>
+                <a href="#products">Products</a>
+                <a href="#booking">Book Engineer</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: muaazsolar@gmail.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Solar Ave, Green City</p>
+            </div>
+            <div class="footer-section">
+                <h4>Business Hours</h4>
+                <p>Monday - Friday: 8AM - 6PM</p>
+                <p>Saturday: 9AM - 4PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MuaazSolar Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Success!</h2>
+            <p id="modalMessage"></p>
+            <button class="close-modal" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="./JavaScript/index.js"></script>
+</body>
+</html>

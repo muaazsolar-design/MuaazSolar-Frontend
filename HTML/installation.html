@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Installation - MuaazSolar</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23FFD700'/><circle cx='50' cy='50' r='35' fill='%23FFA500'/><circle cx='50' cy='50' r='25' fill='%23FF8C00'/><path d='M50 10 L55 30 L50 25 L45 30 Z M90 50 L70 55 L75 50 L70 45 Z M50 90 L45 70 L50 75 L55 70 Z M10 50 L30 45 L25 50 L30 55 Z M75 25 L60 35 L65 32 L62 27 Z M75 75 L62 73 L65 68 L60 65 Z M25 75 L38 73 L35 68 L40 65 Z M25 25 L40 35 L35 32 L38 27 Z' fill='%23FFD700'/></svg>" type="image/svg+xml">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 3rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0a0a0a;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #4a4a4a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0a0a0a;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #0a0a0a;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+
+        .hero {
+            margin-top: 70px;
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(10,10,10,0.8), rgba(30,30,30,0.7)), 
+                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0a0a0a;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .cert-badge {
+            background: #fafafa;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #0a0a0a;
+        }
+
+        .cert-badge h3 {
+            margin-top: 1rem;
+            color: #0a0a0a;
+            font-size: 1.1rem;
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+        }
+
+        .features-section {
+            background: #f8f9fa;
+            padding: 6rem 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0a0a0a;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .timeline-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 100px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:first-child {
+            order: 3;
+        }
+
+        .timeline-content {
+            background: #fafafa;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .timeline-content h4 {
+            color: #0a0a0a;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .timeline-content p {
+            color: #666;
+        }
+
+        .timeline-marker {
+            width: 60px;
+            height: 60px;
+            background: #0a0a0a;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .booking-section {
+            background: #0a0a0a;
+            color: white;
+            padding: 6rem 2rem;
+        }
+
+        .booking-form {
+            max-width: 700px;
+            margin: 3rem auto;
+            background: rgba(255,255,255,0.05);
+            padding: 3rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .form-group select option {
+            background: #0a0a0a;
+            color: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: white;
+            color: #0a0a0a;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        .guarantee-section {
+            padding: 6rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .guarantee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .guarantee-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #0a0a0a;
+        }
+
+        .guarantee-card h3 {
+            color: #0a0a0a;
+            margin: 1rem 0;
+            font-size: 1.3rem;
+        }
+
+        .guarantee-icon {
+            font-size: 3rem;
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal-content h2 {
+            color: #0a0a0a;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .close-modal-btn {
+            background: #0a0a0a;
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: left 0.3s;
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                padding: 1rem 0;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content:first-child {
+                order: 1;
+            }
+
+            .features-grid,
+            .guarantee-grid,
+            .certifications {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MUAAZSOLAR</div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="cost-analysis.html">Cost Analysis</a></li>
+                <li><a href="installation.html">Installation</a></li>
+                <li><a href="maintenance.html">Maintenance</a></li>
+                <li><a href="shop.html">Shop</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Professional Installation</h1>
+            <p>Expert installation by certified engineers with guaranteed quality workmanship. Full compliance with local regulations and building codes</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Certified & Experienced</h2>
+        <p class="section-subtitle">Our team holds industry-leading certifications and expertise</p>
+        
+        <div class="certifications">
+            <div class="cert-badge">
+                <div class="cert-icon">🏆</div>
+                <h3>NABCEP Certified</h3>
+            </div>
+            <div class="cert-badge">
+                <div class="cert-icon">✅</div>
+                <h3>Licensed Electricians</h3>
+            </div>
+            <div class="cert-badge">
+                <div class="cert-icon">🛡️</div>
+                <h3>Insured & Bonded</h3>
+            </div>
+            <div class="cert-badge">
+                <div class="cert-icon">⭐</div>
+                <h3>15+ Years Experience</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Installation Service</h2>
+            <p class="section-subtitle">Quality workmanship with attention to every detail</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Expert Installation</h3>
+                    <p>Our certified technicians have installed over 5,000 solar systems with a 99.8% success rate and zero major incidents.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Permit Handling</h3>
+                    <p>We handle all permits, inspections, and paperwork. Full compliance with local building codes and utility requirements.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Grid Connection</h3>
+                    <p>Seamless integration with your existing electrical system and utility grid connection coordination.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏗️</div>
+                    <h3>Structural Assessment</h3>
+                    <p>Complete roof inspection and structural engineering to ensure your roof can safely support the solar array.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Warranty Protection</h3>
+                    <p>25-year workmanship warranty covering all installation work, ensuring long-term peace of mind.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Fast Installation</h3>
+                    <p>Most residential installations completed in 1-3 days with minimal disruption to your daily routine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Installation Timeline</h2>
+            <p class="section-subtitle">From contract to power generation in 4-8 weeks</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Pre-Installation</h4>
+                        <p>Site assessment, engineering design, and permit applications. Timeline: 2-4 weeks</p>
+                    </div>
+                    <div class="timeline-marker">1</div>
+                    <div></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div></div>
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>Preparation Day</h4>
+                        <p>Final inspection, material delivery, and site preparation. Timeline: 1 day</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Installation</h4>
+                        <p>Mounting system, panel installation, and electrical wiring. Timeline: 1-3 days</p>
+                    </div>
+                    <div class="timeline-marker">3</div>
+                    <div></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div></div>
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h4>Inspection & Activation</h4>
+                        <p>Final inspection, utility approval, and system activation. Timeline: 1-2 weeks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantee-section">
+        <div class="container">
+            <h2 class="section-title">Our Installation Guarantee</h2>
+            <p class="section-subtitle">Your satisfaction and safety are our top priorities</p>
+            
+            <div class="guarantee-grid">
+                <div class="guarantee-card">
+                    <div class="guarantee-icon">✅</div>
+                    <h3>Quality Guarantee</h3>
+                    <p>100% satisfaction or we make it right</p>
+                </div>
+                <div class="guarantee-card">
+                    <div class="guarantee-icon">🛡️</div>
+                    <h3>25-Year Warranty</h3>
+                    <p>Full workmanship warranty</p>
+                </div>
+                <div class="guarantee-card">
+                    <div class="guarantee-icon">🏠</div>
+                    <h3>Roof Protection</h3>
+                    <p>10-year roof penetration warranty</p>
+                </div>
+                <div class="guarantee-card">
+                    <div class="guarantee-icon">💰</div>
+                    <h3>Price Match</h3>
+                    <p>We match competitor quotes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white; text-align: center;">Schedule Your Installation</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8); text-align: center;">Book our certified engineers for professional solar installation</p>
+            
+            <form class="booking-form" id="installationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" required placeholder="john@example.com">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" required placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label>System Size (kW)</label>
+                        <select>
+                            <option>Not sure</option>
+                            <option>3-5 kW</option>
+                            <option>5-8 kW</option>
+                            <option>8-12 kW</option>
+                            <option>12+ kW</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Installation Address *</label>
+                    <input type="text" required placeholder="123 Main Street, City, State, ZIP">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Preferred Start Date</label>
+                        <input type="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Roof Type</label>
+                        <select>
+                            <option>Asphalt Shingle</option>
+                            <option>Metal</option>
+                            <option>Tile</option>
+                            <option>Flat</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <textarea placeholder="Any specific requirements or questions..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Schedule Installation</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 MuaazSolar. All rights reserved.</p>
+        <p>Email: muaazsolar@gmail.com | Phone: (555) 123-4567</p>
+    </footer>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <h2>Installation Scheduled!</h2>
+            <p>Thank you for choosing MuaazSolar. Our team will contact you within 24 hours to confirm your installation details and timeline.</p>
+            <button class="close-modal-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        document.getElementById('installationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('successModal').classList.add('active');
+            this.reset();
+        });
+
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

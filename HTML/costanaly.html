@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Analysis & Planning - MuaazSolar</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23FFD700'/><circle cx='50' cy='50' r='35' fill='%23FFA500'/><circle cx='50' cy='50' r='25' fill='%23FF8C00'/><path d='M50 10 L55 30 L50 25 L45 30 Z M90 50 L70 55 L75 50 L70 45 Z M50 90 L45 70 L50 75 L55 70 Z M10 50 L30 45 L25 50 L30 55 Z M75 25 L60 35 L65 32 L62 27 Z M75 75 L62 73 L65 68 L60 65 Z M25 75 L38 73 L35 68 L40 65 Z M25 25 L40 35 L35 32 L38 27 Z' fill='%23FFD700'/></svg>" type="image/svg+xml">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 3rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0a0a0a;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #4a4a4a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0a0a0a;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #0a0a0a;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+
+        .hero {
+            margin-top: 70px;
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(10,10,10,0.8), rgba(30,30,30,0.7)), 
+                        url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0a0a0a;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: #fafafa;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0a0a0a;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .process-section {
+            background: #f8f9fa;
+            padding: 6rem 2rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            border: 2px solid #0a0a0a;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0a0a0a;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .step h4 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            color: #0a0a0a;
+            font-size: 1.3rem;
+        }
+
+        .calculator-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .calculator-form {
+            max-width: 700px;
+            margin: 3rem auto;
+            background: #fafafa;
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #0a0a0a;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 6px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #0a0a0a;
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #2a2a2a;
+            transform: translateY(-2px);
+        }
+
+        .cta-section {
+            background: #0a0a0a;
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .cta-button {
+            background: white;
+            color: #0a0a0a;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal-content h2 {
+            color: #0a0a0a;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .close-modal-btn {
+            background: #0a0a0a;
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: left 0.3s;
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                padding: 1rem 0;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MUAAZSOLAR</div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="cost-analysis.html">Cost Analysis</a></li>
+                <li><a href="installation.html">Installation</a></li>
+                <li><a href="maintenance.html">Maintenance</a></li>
+                <li><a href="shop.html">Shop</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Cost Analysis & Planning</h1>
+            <p>Comprehensive energy assessment and detailed cost estimates tailored to your property's specific needs and energy consumption patterns</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Why Professional Cost Analysis Matters</h2>
+        <p class="section-subtitle">Make informed decisions with accurate data and expert guidance</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Detailed Energy Assessment</h3>
+                <p>We analyze your current energy consumption patterns, peak usage times, and seasonal variations to design the perfect solar system for your needs.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Accurate Cost Estimates</h3>
+                <p>Get transparent pricing with no hidden fees. Our detailed quotes include equipment, installation, permits, and long-term maintenance costs.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>ROI Calculations</h3>
+                <p>Understand your payback period and long-term savings. We provide detailed financial projections including tax incentives and rebates.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏠</div>
+                <h3>Property Analysis</h3>
+                <p>Complete roof assessment including structural integrity, orientation, shading analysis, and optimal panel placement recommendations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>System Sizing</h3>
+                <p>Proper system sizing ensures maximum efficiency and cost-effectiveness. We calculate the ideal capacity for your energy needs.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Financing Options</h3>
+                <p>Explore various financing solutions including loans, leases, and power purchase agreements to fit your budget.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our Analysis Process</h2>
+            <p class="section-subtitle">A systematic approach to understanding your solar potential</p>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Initial Consultation</h4>
+                    <p>Free consultation to discuss your energy goals and preliminary site evaluation</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Site Survey</h4>
+                    <p>Detailed on-site inspection including roof measurements and shading analysis</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Energy Analysis</h4>
+                    <p>Review of 12 months utility bills to understand consumption patterns</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>System Design</h4>
+                    <p>Custom solar system design optimized for your property and needs</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Cost Proposal</h4>
+                    <p>Detailed quote with equipment specs, installation timeline, and financing options</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h4>Final Review</h4>
+                    <p>Review and finalize the plan with adjustments based on your feedback</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Request Your Free Analysis</h2>
+            <p class="section-subtitle">Get started with a comprehensive energy and cost assessment</p>
+            
+            <form class="calculator-form" id="analysisForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" required placeholder="john@example.com">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" required placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label>Property Type *</label>
+                        <select required>
+                            <option value="">Select Type</option>
+                            <option>Residential</option>
+                            <option>Commercial</option>
+                            <option>Industrial</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Property Address *</label>
+                    <input type="text" required placeholder="123 Main Street, City, State, ZIP">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Average Monthly Bill ($) *</label>
+                        <input type="number" required placeholder="250">
+                    </div>
+                    <div class="form-group">
+                        <label>Roof Size (sq ft)</label>
+                        <input type="number" placeholder="1500">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Additional Information</label>
+                    <textarea placeholder="Tell us about your energy goals, property details, or any specific requirements..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Request Free Analysis</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Saving?</h2>
+            <p>Join thousands of satisfied customers who have made the switch to solar</p>
+            <button class="cta-button" onclick="document.getElementById('analysisForm').scrollIntoView({behavior: 'smooth'})">
+                Get Your Free Quote
+            </button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 MuaazSolar. All rights reserved.</p>
+        <p>Email: muaazsolar@gmail.com | Phone: (555) 123-4567</p>
+    </footer>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <h2>Request Submitted!</h2>
+            <p>Thank you for your interest. Our team will contact you within 24 hours to schedule your free energy assessment.</p>
+            <button class="close-modal-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        document.getElementById('analysisForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('successModal').classList.add('active');
+            this.reset();
+        });
+
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
